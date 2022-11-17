@@ -9,8 +9,14 @@ sys.path.append(".")
 
 api = FastAPI(docs_url="/")
 
+@api.post("/upload")
+async def upload(
+  file: UploadFile = File(...)
+):
+  return {"success": True, "File": file.filename}
+  
 
-@api.post("/file")
+@api.post("/tiff_to_pdf")
 async def upload(
   file: UploadFile = File(...)
 ):
